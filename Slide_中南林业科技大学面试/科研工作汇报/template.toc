@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{研究背景与关键问题}{4}{0}{1}
+\beamer@sectionintoc {2}{高精度拓扑优化数值方法}{7}{0}{2}
+\beamer@sectionintoc {3}{SOPTX 平台与关键技术}{23}{0}{3}
+\beamer@sectionintoc {4}{代表性成果与学术贡献}{31}{0}{4}
+\beamer@sectionintoc {5}{未来科研计划}{36}{0}{5}
