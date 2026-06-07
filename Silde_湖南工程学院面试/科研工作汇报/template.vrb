@@ -1,0 +1,138 @@
+\frametitle{图像直观}
+^^I^^I
+^^I^^I\vspace{-2em}
+^^I^^I
+^^I^^I% ── 定理回顾（始终显示）────────────────────────────────────
+^^I^^I\begin{tcolorbox}[
+^^I^^I^^Icolback=gray!4, colframe=structure.fg!25,
+^^I^^I^^Icolbacktitle=structure.fg!45, coltitle=white,
+^^I^^I^^Ifonttitle=\fontsize{8}{12}\selectfont\bfseries\sffamily,
+^^I^^I^^Ititle={\fontsize{6.5}{10}\selectfont\sffamily\mdseries
+^^I^^I^^I^^I【定理回顾】},
+^^I^^I^^Iarc=3pt, boxrule=0.4pt,
+^^I^^I^^Itoptitle=0.2pt, bottomtitle=0.2pt,
+^^I^^I^^Itop=4pt, bottom=4pt, left=10pt, right=10pt]
+^^I^^I^^I{\fontsize{8}{12}\selectfont\sffamily
+^^I^^I^^I^^I若存在 $r>0$，使得当 $0<|x-x_0|<r$ 时，$g(x)\leq f(x)\leq h(x)$，
+^^I^^I^^I^^I且 $\lim_{x\to x_0}g(x)=\lim_{x\to x_0}h(x)=A$，则
+^^I^^I^^I^^I$\lim_{x\to x_0}f(x)=A$。
+^^I^^I^^I}
+^^I^^I\end{tcolorbox}
+^^I^^I
+^^I^^I\vspace{0.25em}
+^^I^^I
+^^I^^I\centering
+^^I^^I\begin{tikzpicture}
+^^I^^I^^I\begin{axis}[
+^^I^^I^^I^^Iwidth=0.88\linewidth,
+^^I^^I^^I^^Iheight=0.60\paperheight,
+^^I^^I^^I^^Iaxis lines=center,
+^^I^^I^^I^^Ixlabel={$x$}, ylabel={$y$},
+^^I^^I^^I^^Ixlabel style={anchor=north east},
+^^I^^I^^I^^Iylabel style={anchor=south east},
+^^I^^I^^I^^Ixmin=-2.0, xmax=5.4,
+^^I^^I^^I^^Iymin=-1.2, ymax=9.5,
+^^I^^I^^I^^Ixtick={1.5}, xticklabels={},
+^^I^^I^^I^^Iytick={3.5}, yticklabels={},
+^^I^^I^^I^^Itick style={draw=none},
+^^I^^I^^I^^Iclip=false,
+^^I^^I^^I^^Iaxis on top,
+^^I^^I^^I^^Iaxis line style={-stealth, thick},
+^^I^^I^^I^^I]
+^^I^^I^^I^^I
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I%  第 3 帧：夹逼阴影区域（须排在曲线之前以正确叠层）
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I\only<3->{
+^^I^^I^^I^^I^^I\addplot[
+^^I^^I^^I^^I^^Ifill=blue!8, fill opacity=0.5, draw=none,
+^^I^^I^^I^^I^^Idomain=-1.5:3.8, samples=120
+^^I^^I^^I^^I^^I]
+^^I^^I^^I^^I^^I{0.55*(x-1.5)^2 + 0.09*(x-1.5)^3 + 3.5}
+^^I^^I^^I^^I^^I\closedcycle;
+^^I^^I^^I^^I^^I\addplot[
+^^I^^I^^I^^I^^Ifill=white, fill opacity=1, draw=none,
+^^I^^I^^I^^I^^Idomain=-1.5:3.8, samples=120
+^^I^^I^^I^^I^^I]
+^^I^^I^^I^^I^^I{-0.35*(x-1.5)^2 + 0.04*(x-1.5)^3 + 3.5}
+^^I^^I^^I^^I^^I\closedcycle;
+^^I^^I^^I^^I}
+^^I^^I^^I^^I
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I%  第 1 帧（始终显示）：h(x) 上界（蓝色）
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I\addplot[domain=-1.5:3.8, samples=120,
+^^I^^I^^I^^Ivery thick, color=blue!75]
+^^I^^I^^I^^I{0.55*(x-1.5)^2 + 0.09*(x-1.5)^3 + 3.5};
+^^I^^I^^I^^I\node[color=blue!75, font=\small\bfseries, anchor=west]
+^^I^^I^^I^^Iat (axis cs:3.85, 7.3) {$y=h(x)$};
+^^I^^I^^I^^I
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I%  第 2 帧：f(x) 被夹函数（红色）
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I\only<2->{
+^^I^^I^^I^^I^^I\addplot[domain=-1.5:3.8, samples=120,
+^^I^^I^^I^^I^^Ivery thick, color=red!75]
+^^I^^I^^I^^I^^I{0.02*(x-1.5)^3 + 3.5};
+^^I^^I^^I^^I^^I\node[color=red!75, font=\small\bfseries, anchor=west]
+^^I^^I^^I^^I^^Iat (axis cs:3.85, 3.9) {$y=f(x)$};
+^^I^^I^^I^^I}
+^^I^^I^^I^^I
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I%  第 1 帧（始终显示）：g(x) 下界（绿色）
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I\addplot[domain=-1.2:3.8, samples=120,
+^^I^^I^^I^^Ivery thick, color=green!65!black]
+^^I^^I^^I^^I{-0.35*(x-1.5)^2 + 0.04*(x-1.5)^3 + 3.5};
+^^I^^I^^I^^I\node[color=green!65!black, font=\small\bfseries, anchor=west]
+^^I^^I^^I^^Iat (axis cs:3.85, 1.7) {$y=g(x)$};
+^^I^^I^^I^^I
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I%  第 1 帧（始终显示）：辅助虚线 + 轴标签
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I\addplot[dashed, gray!70, semithick]
+^^I^^I^^I^^Icoordinates {(1.5, 0) (1.5, 3.5)};
+^^I^^I^^I^^I\addplot[dashed, gray!70, semithick]
+^^I^^I^^I^^Icoordinates {(0, 3.5) (1.5, 3.5)};
+^^I^^I^^I^^I
+^^I^^I^^I^^I\node[font=\small\bfseries, below] at (axis cs:1.5, 0) {$x_0$};
+^^I^^I^^I^^I\node[font=\small\bfseries, left]  at (axis cs:0, 3.5) {$A$};
+^^I^^I^^I^^I
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I%  汇聚点
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I%  第 1 帧：蓝、绿色点
+^^I^^I^^I^^I\addplot[only marks, mark=*, mark size=3.0pt, color=blue!75]
+^^I^^I^^I^^Icoordinates {(1.5, 3.5)};
+^^I^^I^^I^^I\addplot[only marks, mark=*, mark size=3.0pt, color=green!65!black]
+^^I^^I^^I^^Icoordinates {(1.5, 3.5)};
+^^I^^I^^I^^I%  第 2 帧起：加红色点
+^^I^^I^^I^^I\only<2->{
+^^I^^I^^I^^I^^I\addplot[only marks, mark=*, mark size=3.0pt, color=red!75]
+^^I^^I^^I^^I^^Icoordinates {(1.5, 3.5)};
+^^I^^I^^I^^I}
+^^I^^I^^I^^I%  第 3 帧：白边衬底
+^^I^^I^^I^^I\only<3->{
+^^I^^I^^I^^I^^I\addplot[only marks, mark=o, mark size=3.8pt,
+^^I^^I^^I^^I^^Imark options={color=white, line width=1.2pt}]
+^^I^^I^^I^^I^^Icoordinates {(1.5, 3.5)};
+^^I^^I^^I^^I}
+^^I^^I^^I^^I
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I%  第 3 帧："挤压"箭头标注
+^^I^^I^^I^^I% ══════════════════════════════════════════════════
+^^I^^I^^I^^I\only<3->{
+^^I^^I^^I^^I^^I\draw[-stealth, gray!60, thin]
+^^I^^I^^I^^I^^I(axis cs:0.3, 6.2) -- (axis cs:1.1, 4.2);
+^^I^^I^^I^^I^^I\node[gray!70, font=\scriptsize, anchor=east]
+^^I^^I^^I^^I^^Iat (axis cs:0.25, 6.35) {$h(x_0)=A$};
+^^I^^I^^I^^I^^I
+^^I^^I^^I^^I^^I\draw[-stealth, gray!60, thin]
+^^I^^I^^I^^I^^I(axis cs:0.3, 0.8) -- (axis cs:1.1, 2.8);
+^^I^^I^^I^^I^^I\node[gray!70, font=\scriptsize, anchor=east]
+^^I^^I^^I^^I^^Iat (axis cs:0.25, 0.65) {$g(x_0)=A$};
+^^I^^I^^I^^I}
+^^I^^I^^I^^I
+^^I^^I^^I\end{axis}
+^^I^^I\end{tikzpicture}
+^^I^^I
